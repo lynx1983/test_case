@@ -1,1 +1,57 @@
+@import "variables.less";
+@import "mixins.less";
 @import "reset.less";
+
+html, body {
+	background: @pageBgColor;
+	color: @pageFgColor;
+
+	main {
+
+		height: 3000px;
+
+		.main-menu {
+			position: fixed;
+			top: 300px;
+			width: 100%;
+
+			.wrapper {
+				.clearfix();
+				
+				width: 60%;
+				margin: 0 auto;
+				background: blue;
+
+				nav {
+					.logo {
+						float: left;
+						margin-top: 10px;
+						padding-left: 10px;
+						display: block;
+					}
+
+					ul {
+						.clearfix();
+
+						float: left;
+						margin-left: 20px;
+						
+						li {
+							float: left;
+							background: red;
+							padding: 10px 20px;
+						}
+					}
+				}
+			}
+		}
+
+		.pages {
+			.page {
+				height: 900px;
+				background: green;
+				border: solid red 10px;
+			}
+		}
+	}
+}

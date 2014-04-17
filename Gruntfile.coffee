@@ -46,8 +46,10 @@ module.exports = (grunt) ->
 
 		watch:
 			coffee:
-				files: "<%=paths.src%>/coffee/*.coffee"
+				files: ["**/*.coffee"]
 				tasks: ["coffee"]
+				options: 
+					cwd: "<%=paths.src%>/coffee"
 			less:
 				files: "<%=paths.src%>/less/*.less"
 				tasks: ["less"]
@@ -71,7 +73,7 @@ module.exports = (grunt) ->
 					"requirejs/require.js"
 					"backbone/backbone.js"
 					"underscore/underscore.js"
-					"jquery/jquery.js"
+					"jquery/dist/jquery.js"
 					"requirejs-domready/domReady.js"
 				] 
 				dest: "<%=paths.target%>/js/lib"
