@@ -8,3 +8,5 @@ define [
 		constructor:->
 			@eventBus = EventBus
 			super
+
+		onShow:->

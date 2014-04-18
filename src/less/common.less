@@ -3,54 +3,137 @@
 @import "reset.less";
 
 html, body {
+	font-family: Arial;
+	font-size: 16px;
 	background: @pageBgColor;
 	color: @pageFgColor;
 
-	main {
+	height: 100%;
+	min-height: 100%;
+}
 
-		height: 3000px;
+a, a:visited, a:link, a:active {
+	color: @pageFgColor;
+	text-decoration: none;
+}
+
+body {
+
+	.wrapper {
+		.clearfix();
+		
+		width: 60%;
+		margin: 0 auto;
+	}
+
+	.loader {
+		height: 100%;
+		min-height: 100%;
+
+		.progress-bar {
+			width: 30%;
+			margin: 0 auto;
+			box-shadow: 0 0 5px 0px rgba(255, 255, 255, .85);
+			position: relative;
+			top: 50%;
+
+			.progress {
+				height: 10px;
+				width: 0%;
+				background: @pageFgColor;
+			}
+		}
+	}
+
+	header {
+		position: relative;
+		height: 200px;
+		z-index: 20;
+	}
+
+	footer {
+		position: relative;
+		height: 200px;
+		z-index: 20;
+	}
+
+	main {
+		position: relative;
+
+		.layer {
+			position: absolute;
+		}
+
+		.main_bg {
+			background: url("/img/main_bg.png") no-repeat center top;
+			width: 100%;
+			height: 4797px;
+			z-index: 10;
+			top: 0;
+		}
+
+		.clouds_1 {
+			background: url("/img/clouds_1.png") no-repeat center top;
+			width: 100%;
+			height: 949px;
+			z-index: 1;
+			top: -50px;
+		}
+
+		.clouds_2 {
+			background: url("/img/clouds_2.png") no-repeat center top;
+			width: 100%;
+			height: 1076px;
+			z-index: 1;
+			top: 840px;
+		}
 
 		.main-menu {
 			position: fixed;
-			top: 300px;
+			top: 170px;
 			width: 100%;
+			z-index: 30;
 
-			.wrapper {
+			nav {
 				.clearfix();
-				
-				width: 60%;
-				margin: 0 auto;
-				background: blue;
 
-				nav {
-					.logo {
+				margin: 0 20px;
+				background: @mainMenuBg;
+				box-shadow: 0 0 5px 0px rgba(255, 255, 255, .85);
+
+				.logo {
+					float: left;
+					margin-top: 10px;
+					padding-left: 10px;
+					display: block;
+				}
+
+				ul {
+					.clearfix();
+
+					float: left;
+					margin-left: 20px;
+					
+					li {
 						float: left;
-						margin-top: 10px;
-						padding-left: 10px;
-						display: block;
-					}
-
-					ul {
-						.clearfix();
-
-						float: left;
-						margin-left: 20px;
-						
-						li {
-							float: left;
-							background: red;
-							padding: 10px 20px;
-						}
+						padding: 10px 20px;
 					}
 				}
 			}
 		}
 
 		.pages {
+			position: relative;
+			z-index: 15;
+			
 			.page {
-				height: 900px;
-				background: green;
-				border: solid red 10px;
+
+				.content {
+					margin-top: 150px;
+					margin-bottom: 200px;
+					height: 600px;
+					background: rgba(0, 0, 0, .7);
+				}
 			}
 		}
 	}
