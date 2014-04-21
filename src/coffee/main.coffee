@@ -4,6 +4,7 @@ requirejs.config
 		underscore: "lib/underscore"
 		backbone: "lib/backbone"
 		jquery: "lib/jquery"
+		jqueryeasing: "lib/jquery.easing"
 		domReady: "lib/domReady"
 	shim:
 		jquery: 
@@ -15,6 +16,8 @@ requirejs.config
 			exports: "_"
 		domReady:
 			exports: "domReady"
+		jqueryeasing:
+			deps: ["jquery"]
 
 require [
 	"underscore"

@@ -82,6 +82,7 @@ module.exports = (grunt) ->
 					"backbone/backbone.js"
 					"underscore/underscore.js"
 					"jquery/dist/jquery.js"
+					"jquery.easing/js/jquery.easing.js"
 					"requirejs-domready/domReady.js"
 				]
 				dest: "<%=paths.target%>/js/lib"
@@ -95,6 +96,7 @@ module.exports = (grunt) ->
 					"backbone/backbone.js"
 					"underscore/underscore.js"
 					"jquery/dist/jquery.js"
+					"jquery.easing/js/jquery.easing.js"
 					"requirejs-domready/domReady.js"
 				] 
 				dest: "<%=paths.target%>/_js/lib"

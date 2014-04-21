@@ -2,6 +2,7 @@ define [
 	"./Abstract"
 	"./Menu"
 	"./Layer"
+	"jqueryeasing"
 ], (AbstractView, MenuView, LayerView)->
 	class MainView extends AbstractView
 
@@ -63,14 +64,15 @@ define [
 			if $(window).scrollTop() > 0
 				@moveToPage do @getClosestPage
 
-		scrollTo:(position)->
+		scrollTo:(position, callback)->
 			@moving = yes
 			$("html, body").stop(true, false).animate 
 				scrollTop: "#{position}px"
 			,
-				duration: 500
-				easing: "swing"
-				omplete: =>
+				duration: 2800
+				easing: "easeInOutExpo"
+				complete:=>
+					callback?()
 					@moving = no
 
 		moveToTop:->
