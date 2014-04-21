@@ -4,7 +4,7 @@
 @import "loader.less";
 
 html, body {
-	font-family: Arial;
+	font-family: Tahoma, Arial, 'Sans Serif';
 	font-size: 16px;
 	background: @pageBgColor;
 	color: @pageFgColor;
@@ -23,7 +23,7 @@ body {
 	.wrapper {
 		.clearfix();
 		
-		width: 60%;
+		width: 1200px;
 		margin: 0 auto;
 	}
 
@@ -81,13 +81,20 @@ body {
 
 				margin: 0 20px;
 				background: @mainMenuBg;
-				box-shadow: 0 0 5px 0px rgba(255, 255, 255, .85);
+				border: solid @mainMenuItemBorder 1px;
 
 				.logo {
-					float: left;
-					margin-top: 10px;
-					padding-left: 10px;
 					display: block;
+
+					&.left {
+						float: left;
+						margin: 10px 0 0 25px;
+					}
+
+					&.right {
+						float: right;
+						margin: 17px 25px 0 0;
+					}
 				}
 
 				ul {
@@ -98,7 +105,32 @@ body {
 					
 					li {
 						float: left;
-						padding: 10px 20px;
+						width: 184px;
+						height: 57px;
+						font-size: 12px;
+						border-left: solid @mainMenuItemBorder 1px;
+
+						a {
+							display: block;
+							font-weight: bold;
+							padding-left: 24px;
+							padding-top: 27px;							
+							background: transparent url("/img/menu_marker.png") 12px 28px no-repeat;
+							height: 30px;
+						}
+
+						&.active, &:hover {
+							background: @mainMenuItemBgHover;
+
+							a {
+								background-image: url("/img/menu_marker_hover.png");
+								color: @mainMenuItemFgHover;
+							}
+						}
+
+						&:last-child {
+							border-right: solid @mainMenuItemBorder 1px;
+						}
 					}
 				}
 			}
@@ -115,6 +147,31 @@ body {
 					margin-bottom: 200px;
 					height: 600px;
 					background: rgba(0, 0, 0, .7);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	body {
+
+		.wrapper {
+			width: 1000px;
+		}
+
+		main {
+
+			.main-menu {
+
+				nav {
+
+					ul {
+
+						li {
+							width: 134px;
+						}
+					}
 				}
 			}
 		}
