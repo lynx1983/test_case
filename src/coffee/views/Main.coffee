@@ -12,6 +12,7 @@ define [
 
 		initialize:(@options = {})->
 			@moving = no
+			@anchors = []
 			@
 
 		render:=>
@@ -20,7 +21,7 @@ define [
 
 		setHandlers:=>
 			@eventBus.on "menu.link", @onMenuLink
-			$(window).on "scroll", _.debounce @moveToClosestPage, 1000
+			$(window).on "scroll", _.debounce @moveToClosestAnchor, 1000
 			$(window).on "mousedown DOMMouseScroll mousewheel keyup", @stopScroll
 
 		onShow:->
@@ -30,6 +31,9 @@ define [
 			
 			for page in @options.pages
 				@$pages.append page.render().$el
+				@anchors.push page.$el
+
+			@anchors.push @$el.find "#header"
 
 			new MenuView
 				el: @$el.find ".main-menu"
@@ -48,21 +52,20 @@ define [
 			$("html, body").stop(true, false) if @moving
 
 		onMenuLink:(target)=>
-			page = _.find @options.pages, (page)->
-				page.$el.is target
-			if page
-				@moveToPage page
+			anchor = _.find @anchors, (anchor)->
+				anchor.is target
+			if anchor
+				@moveToAnchor anchor
 			else
 				do @moveToTop
 
-		getClosestPage:->
+		getClosestAnchor:->
 			windowScrollTop = $(window).scrollTop()
-			_.min @options.pages, (page)->
-				Math.abs page.$el.offset().top - windowScrollTop
+			_.min @anchors, (anchor)->
+				Math.abs anchor.offset().top - windowScrollTop
 
-		moveToClosestPage:=>
-			if $(window).scrollTop() > 0
-				@moveToPage do @getClosestPage
+		moveToClosestAnchor:=>
+			@moveToAnchor do @getClosestAnchor
 
 		scrollTo:(position, callback)->
 			@moving = yes
@@ -78,6 +81,7 @@ define [
 		moveToTop:->
 			@scrollTo 0
 
-		moveToPage:(page)->
-			if page 
-				@scrollTo page.$el.offset().top
+		moveToAnchor:(anchor)->
+			if anchor 
+				@scrollTo anchor.offset().top, =>
+					@eventBus.trigger "anchor.reached", anchor.attr("id")
